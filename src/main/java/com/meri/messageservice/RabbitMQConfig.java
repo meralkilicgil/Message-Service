@@ -20,22 +20,17 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue efoQueue(){
-        return new Queue("efoQueue");
-    }
-
-    @Bean
     public Exchange efoExchange(){
         return new TopicExchange("efoExchange");
     }
 
     @Bean
     public Binding meriBinding(){
-        return BindingBuilder.bind(meriQueue()).to(meriExchange()).with("routing.key").noargs();
+        return BindingBuilder.bind(meriQueue()).to(meriExchange()).with("topic.meri").noargs();
     }
 
     @Bean
     public Binding efoBinding(){
-        return BindingBuilder.bind(efoQueue()).to(efoExchange()).with("routing.key").noargs();
+        return BindingBuilder.bind(meriQueue()).to(efoExchange()).with("topic.efo").noargs();
     }
 }

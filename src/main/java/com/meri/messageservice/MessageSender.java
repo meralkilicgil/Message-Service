@@ -13,10 +13,10 @@ public class MessageSender {
     }
 
     public void sendMessageMeri(String message){
-        rabbitTemplate.convertAndSend("meriExchange", "routing.key", message);
+        rabbitTemplate.convertAndSend("meriExchange", "topic.meri", message);
     }
 
     public void sendMessageEfo(String message){
-        rabbitTemplate.convertAndSend("efoExchange", "routing.key", message);
+        rabbitTemplate.convertAndSend("efoExchange", "topic.efo", message);
     }
 }
